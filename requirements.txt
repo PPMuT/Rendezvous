@@ -1,0 +1,16 @@
+# Direct, pip-installable dependencies used by this repo.
+
+angr==9.0.5811
+claripy==9.0.5811
+cle==9.0.5811
+pyvex==9.0.5811
+
+
+networkx==3.1
+
+openai==2.14.0
+pyelftools==0.32
+python-magic==0.4.27
+termcolor==3.1.0
+
+

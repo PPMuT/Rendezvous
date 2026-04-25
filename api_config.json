@@ -1,0 +1,12 @@
+{
+  "source": {
+    "api_key": "xxxxxxxxxxxxxx",
+    "base_url": "xxxxxxxxxxxxxx",
+    "model": "gemini-2.5-flash"
+  },
+  "sink": {
+    "api_key": "xxxxxxxxxxxxxx",
+    "base_url": "xxxxxxxxxxxxxx",
+    "model": "gemini-2.5-flash"
+  }
+}
