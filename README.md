@@ -9,7 +9,6 @@ Rendezvous is a static taint analysis framework for firmware binaries. The three
 - `sink.py`: identify taint sink functions
 - `main.py`: run taint propagation analysis
 
-It is recommended to run all scripts from the repository root.
 
 ## Environment
 
