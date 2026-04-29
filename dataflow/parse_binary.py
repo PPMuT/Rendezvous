@@ -1829,7 +1829,7 @@ class BinaryParser(object):
                         trace_syms.pop(sym)
 
         for n in tmp_graph.nodes():
-            print("kai: %s" % (n))
+            print("node: %s" % (n))
 
         for src, dst in tmp_graph.edges():
             print("edge: %s -> %s" % (src, dst))
@@ -2415,8 +2415,6 @@ class BinaryParser(object):
             trace_sims = trace_expr.expr.sims
 
             # print("expr- %s" % (trace_expr))
-            # print("kai- trace_vars: %s" % (trace_expr.expr.trace_vars))
-            # print("kai- trace_sims: %s" % (trace_sims))
 
             if put_data in trace_sims:
 

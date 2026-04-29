@@ -28,7 +28,6 @@ def merge_simlilar_exprs_v1(trace_exprs):
 
     # DEBUG
     # for leaf_id, sim_structure_exprs in same_struct_exprs.items():
-    #     print("\nkai leaf id: %s %d" % (leaf_id, len(sim_structure_exprs)))
     #     for e in sim_structure_exprs:
     #         print(e)
 
@@ -120,13 +119,11 @@ def _merge_exprs(self, trace_exprs):
     #     print("same struct id: %s" % (struct_id))
 
     # for leaf_id, sim_structure_exprs in same_struct_exprs.items():
-    #     print("\nkai leaf id: %s %d" % (leaf_id, len(sim_structure_exprs)))
 
     #     for e in sim_structure_exprs:
     #         print(e)
 
     # for struct_id, sim_structure_exprs in similar_struct_exprs.items():
-    #     print("\nkai struct id: %s %d" % (struct_id, len(sim_structure_exprs)))
 
     #     for e in sim_structure_exprs:
     #         print(e)

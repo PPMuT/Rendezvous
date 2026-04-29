@@ -42,7 +42,7 @@ For a new firmware sample, update the summary files in the directories above acc
 
 ```bash
 python3 source.py path_to_binary path_to_firmware_root
-# python3 source.py /home/jylsec/Desktop/code/netgear_r6300/root/usr/sbin/httpd /home/jylsec/Desktop/code/netgear_r6300/root
+# python3 source.py tmp/netgear_r6300/root/usr/sbin/httpd tmp/netgear_r6300/root
 ```
 
 - Output: in the resulting dictionary, each `key` is a taint source function and each `value` is the parameter index or return value carrying the taint source
@@ -111,7 +111,7 @@ Based on the two templates above, when adding a new taint source summary for `fu
 
 ```bash
 python3 sink.py path_to_binary path_to_firmware_root
-# python3 sink.py /home/jylsec/Desktop/code/netgear_r6300/root/usr/sbin/httpd /home/jylsec/Desktop/code/netgear_r6300/root
+# python3 sink.py tmp/netgear_r6300/root/usr/sbin/httpd tmp/netgear_r6300/root
 ```
 
 - Output: in the resulting dictionary, each `key` is a taint sink function and each `value` is the argument position of the sink

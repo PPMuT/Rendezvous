@@ -547,7 +547,6 @@ class FastSearch(BinaryInfo):
         if self.icall_check:
             self._update_value(function)
 
-        # Kai add in 2019/10/08
         if execute_flag == 0x1:
             self._push_callee_exprs_to_callsite(function)
             # self._push_callee_exprs_to_caller(function)
@@ -1664,13 +1663,11 @@ class FastSearch(BinaryInfo):
         #     print("same struct id: %s" % (struct_id))
 
         # for leaf_id, sim_structure_exprs in same_struct_exprs.items():
-        #     print("\nkai leaf id: %s %d" % (leaf_id, len(sim_structure_exprs)))
 
         #     for e in sim_structure_exprs:
         #         print(e)
 
         # for struct_id, sim_structure_exprs in similar_struct_exprs.items():
-        #     print("\nkai struct id: %s %d" % (struct_id, len(sim_structure_exprs)))
 
         #     for e in sim_structure_exprs:
         #         print(e)
@@ -2249,7 +2246,6 @@ class FastSearch(BinaryInfo):
 
         self._push_callee_ret_exprs_to_callsite(function)
 
-    # Kai psu add!
     def _push_callee_arg_exprs_to_callsite(self, function):
         """
         Push all trace exprs that contain arguments to corresponding callsites.
@@ -2289,7 +2285,6 @@ class FastSearch(BinaryInfo):
 
                 self._make_use_copy_to_callsite(callsite, argument_use_exprs)
 
-    # Kai psu add!
     def _push_callee_ret_exprs_to_callsite(self, function):
         """
         Push all trace exprs that contain arguments to corresponding callsites.
@@ -2318,7 +2313,6 @@ class FastSearch(BinaryInfo):
             for callsite in caller_sites:
                 self._make_ret_def_copy_to_callsite(callsite, ret_def_exprs)
 
-    # Kai psu add!
     def _get_push_use_exprs(self, function):
         """
         Process the use exprs in function and get the argument use exprs which
@@ -2373,7 +2367,6 @@ class FastSearch(BinaryInfo):
 
         return cons_exprs
 
-    # Kai psu add!
     def _get_push_arg_def_exprs(self, function):
         """
         Process the def exprs in function and get the argument definition exprs which
@@ -2404,7 +2397,6 @@ class FastSearch(BinaryInfo):
 
         return argument_def_exprs
 
-    # Kai psu add!
     def _get_push_ret_def_exprs(self, function):
         """
         Process the def exprs in function and get the ret-pointer definition exprs which
@@ -2427,7 +2419,6 @@ class FastSearch(BinaryInfo):
 
         return new_ret_def_exprs
 
-    # Kai psu add!
     def _remove_killed_definition(self, function, def_exprs):
         """
         Remove the definition that is redefined in one path. So the killed definition should't be push to callsite.
@@ -2465,7 +2456,6 @@ class FastSearch(BinaryInfo):
                     except ValueError:
                         l.info("expr %s has been remove" % (expr2))
 
-    # Kai psu add!
     def _judge_definition_occur(self, function, def_exprs):
         """
         Use the pdom tree to judge the defintion must occur or may occur in a function.

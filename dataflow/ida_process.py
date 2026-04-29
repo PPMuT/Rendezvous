@@ -63,8 +63,8 @@ class IDAProcess(object):
     """
     Generate a ida cfg and call graph by the block and jump info extracting from IDA Pro.
     """
-    # _dataPath = "/home/iotse/angr-work/data/server/"
-    _dataPath = "/home/iotse/angr-work/binaries/libwx_gtk2u_core/data/"
+
+    _dataPath = "xxxxxxx"
 
     def __init__(self, call_graph=None,
                  functions=None,

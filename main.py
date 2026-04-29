@@ -402,10 +402,7 @@ def perform_analysis(binary,
     analyzed_time_start = time.time()
     functions = []
 
-    # import_libaries = {
-    #     # 'libc.so.0': '/home/kuc822/work/Binaries/rv130/libc.so.0',
-    #     'libuClibc-0.9.28.so': '/home/kuc822/work/Binaries/rv130/libuClibc-0.9.28.so'
-    # }
+
     import_libaries = {}
     libary_links = {'libuClibc-0.9.28.so': ['libc.so.0']}
 

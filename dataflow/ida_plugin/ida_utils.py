@@ -3,9 +3,6 @@
 import os
 import configparser
 
-# IDA_PATH_32 = '/home/kai/idapro/idat'
-# IDA_PATH_64 = '/home/kai/idapro/idat64'
-# IDB_STORE_PATH = '/tmp/'
 
 
 def parse_cfg_info(binary_path, ida_data_path, config_file):

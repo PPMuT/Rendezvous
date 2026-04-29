@@ -525,7 +525,6 @@ class EngineVEX(BinaryInfo):
     #     # print("psu-debug: get binop result %s" % (result))
     #     return result
 
-    # Kai code!
     def calculate_simple_binop(self, binop_opnds):
         datas = []
         op, opnds, opnds_size = binop_opnds[0], binop_opnds[1], binop_opnds[2]
@@ -1720,7 +1719,6 @@ class EngineVEX(BinaryInfo):
         else:
             return None
 
-    # Kai code!
     def _summary_register_def_info(self, block, live_defs, reg_defs):
 
         tmp_alias = block.tmp_alias

@@ -59,7 +59,6 @@ class AccurateDataFlow(EngineVEX):
 
         self.backward_store_records = set()
 
-    # Kai code!
     def _initialize_execute_variable2(self, sym, sym_type, expr):
         """
         Initialize the variable while executing irsb
@@ -151,7 +150,6 @@ class AccurateDataFlow(EngineVEX):
         for remove_expr in remove_exprs:
             input_exprs.remove(remove_expr)
 
-    # Kai code!
     def _update_store_addr_with_alias(self, st_addr, st_addr_exprs, code_location, trace_exprs):
 
         new_exprs = []
@@ -662,7 +660,6 @@ class AccurateDataFlow(EngineVEX):
 
         return new_exprs
 
-    # Kai code!
     def _find_store_use2(self, st_addr, st_data, st_size, code_location, trace_expr):
         """
         For the IR "STle(t19) = t9", the tmp t9 is used, could be replaced with 'Store(t19)'
@@ -923,7 +920,6 @@ class AccurateDataFlow(EngineVEX):
                     return sim_action.action_data.args[0], name[1]-opnds[1]
         return None, None
 
-    # Kai code!
     def _find_constant_store_use(self):
         return []
 
@@ -967,7 +963,6 @@ class AccurateDataFlow(EngineVEX):
 
         return new_exprs
 
-    # Kai code!
     def _find_pointer_field_define(self, st_addr, st_data, st_size, code_location, trace_expr):
 
         value = trace_expr.expr.value
@@ -986,25 +981,21 @@ class AccurateDataFlow(EngineVEX):
 
         return [new_expr]
 
-    # Kai code!
     def _find_store_redefine_v1(self, addr_value, code_location, trace_expr):
         sim_actions = trace_expr.expr.sim_actions
         for i, sim_action in sim_actions.items():
             if sim_action.re_store_def(addr_value, 0, code_location):
                 return True
 
-    # Kai code!
     def _find_store_redefine_v2(self, addr_values, trace_expr):
         pass
 
-    # Kai code!
     def _find_store_redefine_v3(self, addr, code_location, trace_expr):
         sim_actions = trace_expr.expr.sim_actions
         for i, sim_action in sim_actions.items():
             if sim_action.re_store_def(addr, 0, code_location):
                 return True
 
-    # Kai code!
     def _find_store_redefine_v4(self, addr_info, code_location, trace_expr):
         sim_actions = trace_expr.expr.sim_actions
         for i, sim_action in sim_actions.items():
@@ -1013,7 +1004,6 @@ class AccurateDataFlow(EngineVEX):
             if sim_action.re_store_def(base, offset, code_location, binop=binop):
                 return True
 
-    # Kai code!
     def _find_put_use2(self, reg_name, put_data, code_location, trace_expr, trace_dir=None):
 
         op, opnds = put_data[0], put_data[1]
@@ -1053,7 +1043,6 @@ class AccurateDataFlow(EngineVEX):
         # print("oooo->binop-put-use %s" % (new_expr))
         return new_expr
 
-    # Kai code!
     def _find_put_use_v1(self, reg_name, put_data, code_location, trace_expr, trace_dir):
 
         ast = BVV(put_data)
@@ -1080,7 +1069,6 @@ class AccurateDataFlow(EngineVEX):
 
         return new_expr
 
-    # Kai code!
     def _find_put_stack_pointer(self, reg_name, stack_ptr, code_location, trace_expr, trace_dir):
 
         new_expr = None
@@ -1097,7 +1085,6 @@ class AccurateDataFlow(EngineVEX):
 
         return new_expr
 
-    # Kai code!
     def _find_wrtmp_use2(self, wr_tmp, wr_data, var_type, code_location, trace_expr):
 
         # if type(wr_data) is int:
@@ -1109,7 +1096,6 @@ class AccurateDataFlow(EngineVEX):
 
         return [new_expr]
 
-    # Kai code!
     def _find_load_alias(self, ld_addr, code_location, trace_expr):
         """
         Check if the trace_expr contain a load alias?
@@ -1144,7 +1130,6 @@ class AccurateDataFlow(EngineVEX):
 
         return load_ptrs
 
-    # Kai code!
     def _find_register_load_use2(self, wr_tmp, ld_addr, code_location, trace_expr):
 
         sim_actions = trace_expr.expr.sim_actions
@@ -1204,7 +1189,6 @@ class AccurateDataFlow(EngineVEX):
 
         return [new_expr]
 
-    # Kai code!
     def _find_load_use_v1(self, action, addr_value, code_location, trace_expr):
 
         # print("load-use-v1: %s" % (trace_expr))
@@ -1235,11 +1219,9 @@ class AccurateDataFlow(EngineVEX):
 
         return [new_expr]
 
-    # Kai code!
     def _find_load_use_v2(self):
         return []
 
-    # Kai code!
     def _find_load_use_v3(self, wr_tmp, opnd_info, var_type, code_location, trace_expr):
 
         sim_actions = trace_expr.expr.sim_actions
@@ -1273,7 +1255,6 @@ class AccurateDataFlow(EngineVEX):
 
         return [new_expr]
 
-    # Kai code!
     def _find_load_use_v4(self, action, addr_sym, var_type, code_location, trace_expr):
         sim_actions = trace_expr.expr.sim_actions
         # print("find_load_use_v4: %s" % (sim_actions))
@@ -1310,7 +1291,6 @@ class AccurateDataFlow(EngineVEX):
     def _find_load_value_v2(self):
         return []
 
-    # Kai code!
     def _find_load_value_v3(self, wr_tmp, addr_alias, var_type, var_size, code_location, trace_expr):
         """
         In forward, find the load(ptr), the trace_ast.op is BVS
@@ -1355,7 +1335,6 @@ class AccurateDataFlow(EngineVEX):
 
         return new_exprs
 
-    # Kai code!
     def _find_load_value2(self, wr_tmp, ld_addr, ld_size, code_location, trace_expr):
 
         ld_addr_value = trace_expr.expr.value
@@ -1379,12 +1358,10 @@ class AccurateDataFlow(EngineVEX):
 
         return [new_expr]
 
-    # Kai code!
     def _find_constant_load_use(self):
         # TODO
         pass
 
-    # Kai code!
     def _find_wrtmp_use_with_binop(self, wr_tmp, opnd, value, code_location, trace_expr):
 
         new_expr = trace_expr.replace(opnd, wr_tmp)
@@ -1395,11 +1372,9 @@ class AccurateDataFlow(EngineVEX):
 
         return [new_expr]
 
-    # Kai code!
     def _find_store_alias_v1(self):
         pass
 
-    # Kai code!
     def _find_store_alias_v2(self, st_addr_info, st_data_alias, code_location, trace_expr):
         """
         For the b-expr, case "STle(t2)=rax+0x20", find whether b-expr contain alias "rax+0x20"
@@ -1449,7 +1424,6 @@ class AccurateDataFlow(EngineVEX):
 
         return new_expr
 
-    # Kai code!
     def _find_store_ptr_alias_in_backward(self, st_addr, st_data_info, code_location, trace_expr):
 
         new_expr = None
@@ -1493,7 +1467,6 @@ class AccurateDataFlow(EngineVEX):
 
         return new_expr
 
-    # Kai code!
     def _find_binop_alias_in_backward(self, op, wr_tmp, op_data, op_offset, code_location, trace_expr):
 
         new_expr = None
@@ -1520,7 +1493,6 @@ class AccurateDataFlow(EngineVEX):
 
         return new_expr
 
-    # Kai code!
     def _find_wrtmp_with_binop_alias(self, wr_tmp, opnd_info, var_type, code_location, trace_expr):
 
         new_expr = None
@@ -1847,7 +1819,6 @@ class AccurateDataFlow(EngineVEX):
 
         return new_exprs
 
-    # Kai code!
     def _kill_register_define(self, reg_name, code_location, trace_expr):
 
         sims = trace_expr.expr.sims
@@ -1863,7 +1834,6 @@ class AccurateDataFlow(EngineVEX):
 
         return new_expr
 
-    # Kai code!
     def kill_expr_by_reg_redefine(self, reg_name, code_location, trace_expr):
         """
         In forward, the put will kill the register live, maybe the trace expr will be killed and should be removed.
@@ -1897,7 +1867,6 @@ class AccurateDataFlow(EngineVEX):
 
         return new_expr
 
-    # Kai code!
     def _forward_store_stmt(self, block, action, code_location, forward_exprs):
         """
         In forward, the vex 'STle(t4) = t5'.
@@ -2143,7 +2112,6 @@ class AccurateDataFlow(EngineVEX):
 
         return new_forward_exprs
 
-    # Kai code!
     def _forward_put_stmt(self, block, action, code_location, forward_exprs):
 
         # print("psu-debug: %s" % (action))
@@ -2223,7 +2191,6 @@ class AccurateDataFlow(EngineVEX):
 
         return new_forward_exprs
 
-    # Kai code!
     def _forward_wrtmp_stmt(self, block, action, code_location, forward_exprs):
         """
         In forward, IR " t4 = Get(rdi) " could trace from rdi to tmp t4.
@@ -2256,7 +2223,6 @@ class AccurateDataFlow(EngineVEX):
 
         return new_forward_exprs
 
-    # Kai code
     def _forward_wrtmp_load_stmt(self, block, action, code_location, forward_exprs):
 
         # print("psu-debug: %s" % (action))
@@ -2334,7 +2300,6 @@ class AccurateDataFlow(EngineVEX):
 
         return new_forward_exprs
 
-    # Kai code!
     def _forward_wrtmp_binop_stmt(self, block, action, code_location, forward_exprs):
         """
         In forward, IR "t4 = Add(t5, 0x20)" could trace into tmp t4.
@@ -2474,7 +2439,6 @@ class AccurateDataFlow(EngineVEX):
 
         return new_forward_exprs
 
-    # Kai code!
     def update_put_alias_in_forward(self, block, trace_expr, update_type=None):
         """
         We update trace expr's tmp or reg with its alias reg while the trace_expr is forward.
@@ -2498,7 +2462,6 @@ class AccurateDataFlow(EngineVEX):
                 # for new_expr in new_exprs:
                 #     print("psu-debug: get new expr (2) %s, cons-ids: %s" % (new_expr, new_expr.cons_ids))
 
-    # Kai code!
     def update_put_alias_in_backward(self, block, trace_expr):
         """
         We update trace expr's reg with its alias reg and generate forward expr.
@@ -2577,7 +2540,6 @@ class AccurateDataFlow(EngineVEX):
                 # print("Add new forward (B2): %s ptr-id: %x" % (new_expr, new_expr.expr.ptr_id))
                 # new_expr.print_sims()
 
-    # Kai code!
     def _forward_execute_stmt(self, block, action, code_location, forward_exprs):
         action_type = action.action_type
         # print("f- %s %s" % (code_location, forward_exprs))
@@ -2624,7 +2586,6 @@ class AccurateDataFlow(EngineVEX):
 
         return new_forward_exprs
 
-    # Kai code!
     def forward_data_trace2(self, block, forward_exprs):
         """
         param: irsb:
@@ -2712,7 +2673,6 @@ class AccurateDataFlow(EngineVEX):
 
         return alive_exprs
 
-    # Kai code!
     def backward_data_trace2(self, block, backward_exprs):
         """
         Trace expr by travel a block's isrb from last stmt to first stmt.
@@ -2800,7 +2760,6 @@ class AccurateDataFlow(EngineVEX):
 
         return alive_exprs
 
-    # Kai code!
     def _backward_execute_stmt2(self, block, action, code_location, backward_exprs):
         action_type = action.action_type
 
@@ -2846,7 +2805,6 @@ class AccurateDataFlow(EngineVEX):
 
         return new_backward_exprs
 
-    # Kai code!
     def _calculate_simple_binop_v1(self, binop_opnds):
         datas = []
         op, opnds = binop_opnds[0], binop_opnds[1]
@@ -2862,7 +2820,6 @@ class AccurateDataFlow(EngineVEX):
 
         return result
 
-    # Kai code!
     def _calculate_simple_binop_v2(self, binop_opnds, data_size):
         datas = []
         op, opnds = binop_opnds[0], binop_opnds[1]
@@ -2877,7 +2834,6 @@ class AccurateDataFlow(EngineVEX):
 
         return result
 
-    # Kai code!
     def _calculate_simple_binop_v3(self, binop_opnds):
         datas = []
         op, opnds, opnds_size = binop_opnds[0], binop_opnds[1], binop_opnds[2]
@@ -2892,7 +2848,6 @@ class AccurateDataFlow(EngineVEX):
 
         return result
 
-    # Kai code!
     def _update_register_bak(self, block, def_regs, reg_defs, live_defs, trace_expr):
 
         # print("psu-debug: %s\nupdate_register %s %s %s" % (code_location, def_regs, reg_defs, live_defs))
@@ -2954,7 +2909,6 @@ class AccurateDataFlow(EngineVEX):
 
         return data
 
-    # Kai code!
     def _update_register(self, block, update_regs, reg_defs, live_defs, trace_expr):
 
         def contain_repeat_reg(data, update_regs):
@@ -3031,7 +2985,6 @@ class AccurateDataFlow(EngineVEX):
             find_loop_copy_flag = False
             if use_at.inc_flag:
                 if isinstance(new_expr, RecursiveExpr):
-                    # print("Kai-Rec: %s %s\n base-offset: %s %s" % (trace_expr, trace_expr.base, base_ast, offset_ast))
 
                     if use_at.code_location in new_expr.inc_records or (trace_expr.expr.data_type in ['Cons', 'Tdata']):
                         return None
@@ -3090,7 +3043,6 @@ class AccurateDataFlow(EngineVEX):
 
         return new_expr
 
-    # Kai code!
     def _update_register_in_expr(self, d_reg, u_var, var_type, last_index, index, trace_expr):
         """
         update the register name 'rxx' in expr with reg's use var.
@@ -3105,7 +3057,6 @@ class AccurateDataFlow(EngineVEX):
 
         return new_expr
 
-    # Kai code!
     def _backward_update_put_def(self, block, live_defs, backward_exprs, reg_defs, alive_exprs):
         """
         update the register put def in backward.
@@ -3174,7 +3125,6 @@ class AccurateDataFlow(EngineVEX):
             backward_exprs.remove(kill_expr)
             block.backward_exprs.remove(kill_expr)
 
-    # Kai code!
     def _forward_update_tmp_alias(self, trace_expr, tmp_alias):
         new_exprs = []
         trace_sims = trace_expr.expr.sims
@@ -3196,7 +3146,6 @@ class AccurateDataFlow(EngineVEX):
         # print("tmp-alias: %s" % (new_exprs))
         return new_exprs
 
-    # Kai code!
     def _forward_update_reg_alias(self, trace_expr, reg_alias):
         """
         In forward analysis, we should update the reg with its alias register.
@@ -3232,7 +3181,6 @@ class AccurateDataFlow(EngineVEX):
 
         return new_forward_exprs
 
-    # Kai code!
     def _check_and_update_remaining_exprs(self, block, code_location, redef_exprs, backward_exprs):
         """
         Check and update the remaining exprs which re-backward trace to find store definition.
@@ -3264,7 +3212,6 @@ class AccurateDataFlow(EngineVEX):
 
         return new_backward_exprs
 
-    # Kai code!
     def _backward_check_store_def(self, block, store_defs, code_location, backward_exprs):
         """
         Check the complex struct field store definition.
@@ -3331,7 +3278,6 @@ class AccurateDataFlow(EngineVEX):
 
         return new_backward_exprs
 
-    # Kai code!
     def _backward_store_stmt(self, block, action, code_location, backward_exprs):
         """
         How to process 'store' action in backward? Any store may change the variable.
@@ -3395,7 +3341,6 @@ class AccurateDataFlow(EngineVEX):
         # print("xxx-%s" % (new_backward_exprs))
         return new_backward_exprs
 
-    # Kai code!
     def _backward_put_stmt(self, block, action, code_location, backward_exprs):
         """
         In backward, IR "Put(rdi) = t4 + offset" could trace from 't4+offset' to reg rdi in taint analysis.
@@ -3418,7 +3363,6 @@ class AccurateDataFlow(EngineVEX):
 
         return new_backward_exprs
 
-    # Kai code!
     def _backward_wrtmp_stmt(self, block, action, code_location, backward_exprs):
         """
         In backward, IR "t4 = Get(rdi) or t4 = t5"
@@ -3459,7 +3403,6 @@ class AccurateDataFlow(EngineVEX):
 
         return new_backward_exprs
 
-    # Kai code!
     def _backward_wrtmp_binop_stmt(self, block, action, code_location, backward_exprs):
 
         # print("psu-debug: %s" % (action))
@@ -3521,7 +3464,6 @@ class AccurateDataFlow(EngineVEX):
 
         return new_backward_exprs
 
-    # Kai code!
     def _backward_wrtmp_load_stmt(self, block, action, code_location, backward_exprs):
 
         # print("psu-debug: %s" % action)
@@ -3579,7 +3521,6 @@ class AccurateDataFlow(EngineVEX):
 
         return new_backward_exprs
 
-    # Kai code!
     def _backward_loadg_stmt(self, block, action, code_location, backward_exprs):
         """
         Process the pyvex.stmt.LoadG statement
@@ -3654,7 +3595,6 @@ class AccurateDataFlow(EngineVEX):
 
         return new_backward_exprs
 
-    # Kai code!
     def _backward_wrtmp_ite_stmt(self, block, action, code_location, backward_exprs):
         """
         Process t3 = ITE(guard, t1, t2)
@@ -3770,7 +3710,6 @@ class AccurateDataFlow(EngineVEX):
             curr_guard = trace_expr.guard
             satisfiable = True
 
-            # print('kai', curr_guard, true_guard)
             if curr_guard is not None:
                 constraints = [true_guard, curr_guard]
                 satisfiable = self.judge_constraints_satisfiable(constraints)
@@ -3811,7 +3750,6 @@ class AccurateDataFlow(EngineVEX):
 
         return new_forward_exprs
 
-    # Kai code!
     def _backward_wrtmp_unop_stmt(self, block, action, code_location, backward_exprs):
 
         new_backward_exprs = []
@@ -3851,7 +3789,6 @@ class AccurateDataFlow(EngineVEX):
 
         return new_backward_exprs
 
-    # Kai code!
     def _find_register_store_def_v1(self, block, action, st_addr, trace_expr):
         """
         The st_addr is str, e.g. ('txx' or 'rxx')
@@ -3914,7 +3851,6 @@ class AccurateDataFlow(EngineVEX):
 
         return [new_expr]
 
-    # Kai code!
     def _find_register_store_def_v2(self, block, action, addr_info, trace_expr):
 
         code_location = action.code_location
@@ -3978,7 +3914,6 @@ class AccurateDataFlow(EngineVEX):
 
         return [new_expr]
 
-    # Kai code!
     def _find_concrete_addr_store_def_v1(self, block, action, trace_expr):
         """
         The store addr is concrete.
@@ -4045,7 +3980,6 @@ class AccurateDataFlow(EngineVEX):
 
         return [new_expr]
 
-    # Kai code!
     def _find_register_store_def(self, st_addr, st_data, st_size, code_location, trace_expr):
         # if st_addr not in trace_expr.expr.sims:
         #     return []
@@ -4099,7 +4033,6 @@ class AccurateDataFlow(EngineVEX):
 
         return [new_expr]
 
-    # Kai code!
     def _find_register_store_def2(self, st_addr, st_data, st_size, code_location, trace_expr):
 
         store_label = False
@@ -4166,7 +4099,6 @@ class AccurateDataFlow(EngineVEX):
 
         return [new_expr]
 
-    # Kai code!
     def _find_put_def2(self, reg_name, put_data, put_size, code_location, trace_expr):
 
         trace_dir = None
@@ -4182,7 +4114,6 @@ class AccurateDataFlow(EngineVEX):
 
         return [new_expr]
 
-    # Kai code!
     def _find_wrtmp_def_v1(self, wr_tmp, wr_data, wr_size, code_location, var_type, trace_expr):
 
         if type(wr_data) is int:
@@ -4200,7 +4131,6 @@ class AccurateDataFlow(EngineVEX):
 
         return [new_expr]
 
-    # Kai code
     def _find_wrtmp_def_v2(self, wr_tmp, data_info, var_type, code_location, sim_types, trace_expr):
         """
         The data_info's type is Tuple, '(op, (opnd1, opnd2), (opnd1_size, opnd2_size))'
@@ -4217,7 +4147,6 @@ class AccurateDataFlow(EngineVEX):
 
         return [new_expr]
 
-    # Kai code!
     def _find_wrtmp_def2(self, wr_tmp, wr_data, wr_size, code_location, trace_expr):
 
         if type(wr_data) is int:
@@ -4233,7 +4162,6 @@ class AccurateDataFlow(EngineVEX):
 
         return [new_expr]
 
-    # Kai code!
     def _find_wrtmp_binop_def(self, block, action, opnds_info, var_type, trace_expr, killed_exprs):
 
         new_exprs = []
@@ -4246,7 +4174,6 @@ class AccurateDataFlow(EngineVEX):
         if action.inc_flag:
             binop_data, base_ast, offset_ast = self._get_increment_ast(action)
             # if isinstance(trace_expr, RecursiveExpr):
-            #     print("Kai-Rec: %s %s\n base-offset: %s %s" % (trace_expr, trace_expr.base, base_ast, offset_ast))
 
             if isinstance(trace_expr, RecursiveExpr):
 
@@ -4321,7 +4248,6 @@ class AccurateDataFlow(EngineVEX):
 
         return new_exprs
 
-    # Kai code!
     def _find_wrtmp_unop_def(self, wr_tmp, wr_data, code_location, trace_expr):
 
         new_expr = trace_expr.replace(wr_tmp, wr_data)
@@ -4331,7 +4257,6 @@ class AccurateDataFlow(EngineVEX):
 
         return [new_expr]
 
-    # Kai code!
     def _find_wrtmp_load_def_v1(self, block, action, trace_expr):
 
         # print("wrtmp-load: %s" % (action))
@@ -4413,7 +4338,6 @@ class AccurateDataFlow(EngineVEX):
         new_exprs.append(new_expr)
         return new_exprs
 
-    # Kai code!
     def _find_wrtmp_load_def_v2(self, block, action, trace_expr):
 
         wr_tmp = action.dst
@@ -4442,7 +4366,6 @@ class AccurateDataFlow(EngineVEX):
 
         return [new_expr]
 
-    # Kai code!
     def _find_wrtmp_load_def_v3(self, block, action, trace_expr):
         """
         In backward, if trace_expr have 'var * 4' or 'var *8',
@@ -4467,12 +4390,10 @@ class AccurateDataFlow(EngineVEX):
         elif (data_type == 'Ret' and len(trace_expr.expr.sim_actions)):
             trace_expr.expr.trace_dir = 'B'
 
-    # Kai code!
     def _find_constant_store_def(self):
 
         return []
 
-    # Kai code!
     def _label_and_create_reforward_exprs(self, alias_ptr, code_location, trace_exprs):
         """
         In backward, some load expr should re-forward to find store def.
@@ -4491,7 +4412,6 @@ class AccurateDataFlow(EngineVEX):
 
         return new_exprs
 
-    # Kai code!
     def _create_increment_data(self, wr_data_info, wr_size):
         binop = wr_data_info[0]
         opnds = wr_data_info[1]
@@ -4661,7 +4581,6 @@ class AccurateDataFlow(EngineVEX):
             expr.get_trace_variable(expr.expr.killed_vars)
             # print("The simplify expr %s" % (expr))
 
-    # Kai code!
     def convert_shift_operators(self, data ,data_type=None):
         if len(data.args) != 2:
             l.info("The data %s has complex operators" % (data))
@@ -4713,7 +4632,6 @@ class AccurateDataFlow(EngineVEX):
             trace_data = claripy.BVS('t%d' % (tmp), self.arch_bits, explicit_name=True)
             return trace_data
 
-    # Kai code!
     def create_sim_action(self, action_data, def_loc, var_type=None):
         all_deref_info = get_all_deref_info(action_data)
         deref_info = all_deref_info[0]
@@ -4726,7 +4644,6 @@ class AccurateDataFlow(EngineVEX):
 
         return new_sim_action
 
-    # Kai code!
     def create_sim_actions(self, action_data, def_loc, var_type=None):
         # print("create_sim_actions: %s %s" % (action_data, def_loc))
         new_sim_actions = {}

@@ -32,7 +32,7 @@ def get_ida_bytes(save_file):
 
 def main():
     # save_path=ARGV[1]
-    save_path = '/home/kai/Test/ida_resutl/'
+    save_path = 'xxxxxxx'
     save_file = save_path + file_name + '.bytes'
     print("save_file: %s" % (save_file))
 
